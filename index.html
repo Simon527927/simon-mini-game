@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simon的小游戏</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>Simon的小游戏</h1>
+      <p class="subtitle">点击相同照片，消除所有卡片</p>
+    </header>
+
+    <section class="settings-panel" aria-label="游戏设置">
+      <button id="soundToggle" class="setting-toggle" type="button" aria-pressed="true">音效：开</button>
+      <button id="vibrationToggle" class="setting-toggle" type="button" aria-pressed="true">震动：开</button>
+      <button id="unlockAudioButton" class="setting-toggle unlock-audio-button" type="button">开启音效</button>
+      <p id="audioHint" class="audio-hint">手机没有声音时，先点“开启音效”，并确认没有静音。</p>
+    </section>
+
+    <section class="status-panel" aria-label="游戏状态">
+      <div class="status-item">
+        <span class="status-label">用时</span>
+        <strong id="timeDisplay">00:00</strong>
+      </div>
+      <div class="status-item">
+        <span class="status-label">步数</span>
+        <strong id="movesDisplay">0</strong>
+      </div>
+      <div class="status-item">
+        <span class="status-label">已消除</span>
+        <strong><span id="matchedDisplay">0</span> / <span id="totalDisplay">0</span></strong>
+      </div>
+    </section>
+
+    <p id="bestDisplay" class="best-record">最佳：暂无</p>
+
+    <section class="difficulty-panel" aria-label="难度选择">
+      <button class="difficulty-button" type="button" data-difficulty="easy">简单</button>
+      <button class="difficulty-button" type="button" data-difficulty="normal">普通</button>
+      <button class="difficulty-button is-active" type="button" data-difficulty="hard">困难</button>
+    </section>
+
+    <section class="controls" aria-label="游戏控制">
+      <button id="startButton" type="button">开始游戏</button>
+      <button id="restartButton" type="button" class="secondary">重新开始</button>
+      <button id="exitButton" type="button" class="secondary">退出游戏</button>
+    </section>
+
+    <section id="gameBoard" class="game-board" aria-label="照片配对区域"></section>
+  </main>
+
+  <div id="winOverlay" class="win-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+    <section class="win-panel">
+      <h2 id="winTitle">🎉 恭喜通关！</h2>
+      <p>当前难度：<strong id="finalDifficulty">困难</strong></p>
+      <p>本次用时：<strong id="finalTime">00:00</strong></p>
+      <p>本次步数：<strong id="finalMoves">0</strong></p>
+      <p>最佳用时：<strong id="finalBestTime">暂无</strong></p>
+      <p>最少步数：<strong id="finalBestMoves">暂无</strong></p>
+      <p class="result-message" id="resultMessage">继续挑战！</p>
+      <div class="win-actions">
+        <button id="playAgainButton" type="button">再玩一次</button>
+        <button id="nextLevelButton" type="button">下一关</button>
+        <button id="homeButton" type="button" class="secondary">返回首页</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
